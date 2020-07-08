@@ -6,7 +6,10 @@ class App extends React.Component {
     super(props);
     this.state = {
       start_time: 0,
-      end_time: 0
+      end_time: 0,
+      dot: false, //<300 millis
+      dash: true  //>300 millis
+      
     }
   }
   
@@ -27,6 +30,7 @@ class App extends React.Component {
     return (
       <div>
         <button id="btn" onMouseDown={this.handleEvent} onMouseUp={this.handleEvent}> CLICK </button>
+        console.log({this.state.end_time - this.state.start_time})
       </div>
       
     );
