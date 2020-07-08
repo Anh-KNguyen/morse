@@ -5,19 +5,20 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: "Mouse Event"
+      start_time: 0,
+      end_time: 0
     }
   }
   
   handleEvent = (event) => {
     if(event.type === "mousedown") {
       this.setState({
-        message: "Mouse Down"
+        start_time: Date.now()
       });
     }
     else {
       this.setState({
-        message: "Mouse Up"
+        end_time: Date.now()
       });
     }
   }
