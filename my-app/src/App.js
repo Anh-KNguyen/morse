@@ -41,12 +41,18 @@ class App extends React.Component {
     }
   }
 
+  handleEndLetterEvent = (event) => {
+    if(event.type === "mousedown") {
+
+    }
+  }
+
   render() {
     return (
       <div>
         <button id="morse-btn" onMouseDown={this.handleMorseEvent} onMouseUp={this.handleMorseEvent}> CLICK </button>
         {this.state.end_time - this.state.start_time}
-        <button id="end-word-btn" onMouseDown={this.handleEndWordEvent}> End word </button>
+        <button id="end-word-btn" onMouseDown={this.handleEndLetterEvent}> End letter </button>
         <br/>
         Dot:{this.state.dot.toString()}
         <br/>
