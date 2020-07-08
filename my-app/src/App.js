@@ -16,10 +16,10 @@ class App extends React.Component {
   handleMorseEvent = (event) => {
     if(event.type === "mousedown") {
       this.setState({
-        start_time: Date.now()
+        start_time: Date.now()  
       });
     }
-    else {
+    else { //mouse up
       let local_end_time = Date.now()
       this.setState({
         end_time: local_end_time
@@ -47,6 +47,10 @@ class App extends React.Component {
         
       }
     }
+  }
+
+  handleEndLetterEvent = (event) => {
+    
   }
 
   render() {
