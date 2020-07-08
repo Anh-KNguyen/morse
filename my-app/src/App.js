@@ -13,7 +13,7 @@ class App extends React.Component {
     }
   }
   
-  handleEvent = (event) => {
+  handleMorseEvent = (event) => {
     if(event.type === "mousedown") {
       this.setState({
         start_time: Date.now()
@@ -44,13 +44,15 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <button id="btn" onMouseDown={this.handleEvent} onMouseUp={this.handleEvent}> CLICK </button>
+        <button id="morse-btn" onMouseDown={this.handleMorseEvent} onMouseUp={this.handleMorseEvent}> CLICK </button>
         {this.state.end_time - this.state.start_time}
-        <br></br>
+        <button id="end-word-btn" onMouseDown={this.handleEndWordEvent}> End word </button>
+        <br/>
         Dot:{this.state.dot.toString()}
-        <br></br>
+        <br/>
         Dash:{this.state.dash.toString()}
       </div>
+      
       
     );
   }
