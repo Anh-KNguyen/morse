@@ -8,7 +8,7 @@ class App extends React.Component {
       start_time: 0,
       end_time: 0,
       dot: false, //<300 millis
-      dash: true  //>300 millis
+      dash: false  //>300 millis
       
     }
   }
@@ -20,9 +20,24 @@ class App extends React.Component {
       });
     }
     else {
+      let local_end_time = Date.now()
       this.setState({
-        end_time: Date.now()
+        end_time: local_end_time
       });
+      
+      let time = local_end_time - this.state.start_time
+      if(time < 300) {
+        this.setState({
+          dot: true,
+          dash: false
+        })
+      }
+      else{
+        this.setState({
+          dash: true,
+          dot: false
+        })
+      }
     }
   }
 
@@ -30,7 +45,11 @@ class App extends React.Component {
     return (
       <div>
         <button id="btn" onMouseDown={this.handleEvent} onMouseUp={this.handleEvent}> CLICK </button>
-        console.log({this.state.end_time - this.state.start_time})
+        {this.state.end_time - this.state.start_time}
+        <br></br>
+        Dot:{this.state.dot.toString()}
+        <br></br>
+        Dash:{this.state.dash.toString()}
       </div>
       
     );
