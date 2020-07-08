@@ -8,8 +8,8 @@ class App extends React.Component {
       start_time: 0,
       end_time: 0,
       dot: false, //<300 millis
-      dash: false  //>300 millis
-      
+      dash: false,  //>300 millis
+      sequenceLetter: ""
     }
   }
   
@@ -24,26 +24,28 @@ class App extends React.Component {
       this.setState({
         end_time: local_end_time
       });
-      
+
+      // form sequence of letter
       let time = local_end_time - this.state.start_time
-      if(time < 300) {
-        this.setState({
-          dot: true,
-          dash: false
+      if(time < 300) { //dot
+        this.setState((state) => {
+          return {
+            dot: true,
+            dash: false,
+            sequenceLetter: state.sequenceLetter + '.'
+          }
         })
       }
-      else{
-        this.setState({
-          dash: true,
-          dot: false
+      else{ //dash
+        this.setState((state) => {
+          return {
+            dot: false,
+            dash: true,
+            sequenceLetter: state.sequenceLetter + '-'
+          }
         })
+        
       }
-    }
-  }
-
-  handleEndLetterEvent = (event) => {
-    if(event.type === "mousedown") {
-
     }
   }
 
@@ -57,9 +59,9 @@ class App extends React.Component {
         Dot:{this.state.dot.toString()}
         <br/>
         Dash:{this.state.dash.toString()}
+        <br/>
+        {this.state.sequenceLetter}
       </div>
-      
-      
     );
   }
 
