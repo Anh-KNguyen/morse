@@ -65,3 +65,12 @@ const morseData = [
     ['@', '.--.-.'],
     ['=', '-...-']
   ];
+
+  let dict = {};
+  for (let i=0; i<morseData.length; i++) {
+    let letter = morseData[i][0]
+    let sequence = morseData[i][1]
+    dict[sequence] = letter
+  }
+
+  console.log(dict);
