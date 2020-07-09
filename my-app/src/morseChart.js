@@ -1,4 +1,4 @@
-const morseData = {
+const data = {
   '.-': 'A',
   '-...': 'B',
   '-.-.': 'C',
@@ -65,3 +65,5 @@ const morseData = {
   '.--.-.': '@',
   '-...-': '='
 }
+
+export {data};

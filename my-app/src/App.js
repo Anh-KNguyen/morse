@@ -1,5 +1,5 @@
 import React from 'react';
-import morseChart from './morseChart';
+import {data} from './morseChart.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -9,7 +9,8 @@ class App extends React.Component {
       end_time: 0,
       dot: false, //<300 millis
       dash: false,  //>300 millis
-      sequenceLetter: ""
+      sequence: "",
+      letter: ""
     }
   }
   
@@ -32,7 +33,7 @@ class App extends React.Component {
           return {
             dot: true,
             dash: false,
-            sequenceLetter: state.sequenceLetter + '.'
+            sequence: state.sequence + '.'
           }
         })
       }
@@ -41,7 +42,7 @@ class App extends React.Component {
           return {
             dot: false,
             dash: true,
-            sequenceLetter: state.sequenceLetter + '-'
+            sequence: state.sequence + '-'
           }
         })
         
@@ -50,7 +51,11 @@ class App extends React.Component {
   }
 
   handleEndLetterEvent = (event) => {
-    
+    if(event.type === "mousedown") {
+      if (this.state.sequence in data) {
+        console.log(data[this.state.sequence])
+      }
+    }
   }
 
   render() {
@@ -64,7 +69,7 @@ class App extends React.Component {
         <br/>
         Dash:{this.state.dash.toString()}
         <br/>
-        {this.state.sequenceLetter}
+        {this.state.sequence}
       </div>
     );
   }
