@@ -55,6 +55,9 @@ class App extends React.Component {
       if (this.state.sequence in data) {
         console.log(data[this.state.sequence])
       }
+      else {
+        console.log("incorrect letter")
+      }
     }
   }
 
