@@ -54,9 +54,19 @@ class App extends React.Component {
     if(event.type === "mousedown") {
       if (this.state.sequence in data) {
         console.log(data[this.state.sequence])
+        this.setState((state) => {
+          return {
+            sequence: ""
+          }
+        })
       }
       else {
         console.log("incorrect letter")
+        this.setState((state) => {
+          return {
+            sequence: ""
+          }
+        })
       }
     }
   }
