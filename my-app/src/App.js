@@ -7,10 +7,11 @@ class App extends React.Component {
     this.state = {
       start_time: 0,
       end_time: 0,
-      dot: false, //<300 millis
-      dash: false,  //>300 millis
-      sequence: "",
-      letter: ""
+      dot: false,   // <300 millis
+      dash: false,  // >300 millis
+      sequence: "", // dot and dash sequence
+      letter: "",   // single letter
+      word: ""      // a whole word
     }
   }
   
@@ -53,10 +54,11 @@ class App extends React.Component {
   handleEndLetterEvent = (event) => {
     if(event.type === "mousedown") {
       if (this.state.sequence in data) {
-        console.log(data[this.state.sequence])
         this.setState((state) => {
           return {
+            letter: data[this.state.sequence],
             sequence: ""
+            
           }
         })
       }
@@ -83,6 +85,8 @@ class App extends React.Component {
         Dash:{this.state.dash.toString()}
         <br/>
         {this.state.sequence}
+        <br/>
+        {this.state.letter}
       </div>
     );
   }
