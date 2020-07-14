@@ -77,7 +77,8 @@ class App extends React.Component {
     if(event.type === "mousedown") {
       this.setState((state) => {
         return {
-
+          word: state.word + " " + state.letter,
+          letter: ""
         }
       })
     }
@@ -99,6 +100,8 @@ class App extends React.Component {
         {this.state.sequence}
         <br/>
         {this.state.letter}
+        <br/>
+        {this.state.word}
       </div>
     ); 
   }
