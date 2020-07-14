@@ -10,7 +10,7 @@ class App extends React.Component {
       dot: false,   // <300 millis
       dash: false,  // >300 millis
       sequence: "", // dot and dash sequence
-      letter: "",   // single letter
+      letter: "",   // concatenation of letters
       word: ""      // a whole word
     }
   }
@@ -56,7 +56,7 @@ class App extends React.Component {
       if (this.state.sequence in data) {
         this.setState((state) => {
           return {
-            letter: data[this.state.sequence],
+            letter: state.letter + data[this.state.sequence], // concatenation of letters
             sequence: ""
             
           }
@@ -73,12 +73,24 @@ class App extends React.Component {
     }
   }
 
+  handleEndWordEvent = (event) => {
+    if(event.type === "mousedown") {
+      this.setState((state) => {
+        return {
+
+        }
+      })
+    }
+  }
+
+
   render() {
     return (
       <div>
-        <button id="morse-btn" onMouseDown={this.handleMorseEvent} onMouseUp={this.handleMorseEvent}> CLICK </button>
+        <button id="morse-btn" onMouseDown={this.handleMorseEvent} onMouseUp={this.handleMorseEvent}>CLICK</button>
         {this.state.end_time - this.state.start_time}
-        <button id="end-word-btn" onMouseDown={this.handleEndLetterEvent}> End letter </button>
+        <button id="end-letter-btn" onMouseDown={this.handleEndLetterEvent}>End letter</button>
+        <button id="end-word-btn" onMouseDown={this.handleEndWordEvent}>End Word</button>
         <br/>
         Dot:{this.state.dot.toString()}
         <br/>
@@ -88,7 +100,7 @@ class App extends React.Component {
         <br/>
         {this.state.letter}
       </div>
-    );
+    ); 
   }
 
 }
