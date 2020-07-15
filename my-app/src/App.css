@@ -1,0 +1,19 @@
+.buttonContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pressed {
+    background: radial-gradient(#000,#4c4c4c);
+    border: 5px solid #2c2c2c
+}
+
+.dot-button {
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    border: 1px solid black;
+    margin-top: 500px;
+}
