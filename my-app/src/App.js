@@ -1,6 +1,7 @@
 import React from 'react';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.css';
 import {data} from './morseChart.js';
+import './App.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -93,20 +94,30 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <div class="buttonContainer">
-          <button class="dot-button" style={{backgroundColor: this.state.buttonColor}} onMouseDown={this.handleMorseEvent} onMouseUp={this.handleMorseEvent}></button>
+        <div class="row">
+          <div class="col-md-auto">
+            <button class="dot-button" style={{backgroundColor: this.state.buttonColor}} onMouseDown={this.handleMorseEvent} onMouseUp={this.handleMorseEvent}></button>
+          </div>
+          <div class="col-md-auto align-self-center">
+            <div>
+              <button onMouseDown={this.handleEndLetterEvent}>End letter</button>
+            </div>
+            <div>
+              <button onMouseDown={this.handleEndWordEvent}>End Word</button>
+            </div>
+          </div>   
         </div>
+        
         <div>
           {/* {this.state.end_time - this.state.start_time} */}
-          <button onMouseDown={this.handleEndLetterEvent}>End letter</button>
-          <button onMouseDown={this.handleEndWordEvent}>End Word</button>
+          
           <br/>
           {this.state.sequence}
           <br/>
           {this.state.letter}
           <br/>
           {this.state.word}
-      </div>
+        </div>
       </>
     ); 
   }
