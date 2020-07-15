@@ -94,6 +94,9 @@ class App extends React.Component {
   render() {
     return (
       <>
+        <div class="light-on light-off">
+        
+        </div>
         <div class="row">
           <div class="col-md-auto">
             <button class="dot-button" style={{backgroundColor: this.state.buttonColor}} onMouseDown={this.handleMorseEvent} onMouseUp={this.handleMorseEvent}></button>
