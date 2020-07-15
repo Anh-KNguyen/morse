@@ -1,10 +1,12 @@
 import React from 'react';
+import './App.css';
 import {data} from './morseChart.js';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      buttonColor: "black",
       start_time: 0,
       end_time: 0,
       dot: false,   // <300 millis
@@ -14,16 +16,19 @@ class App extends React.Component {
       word: ""      // a whole word
     }
   }
+
   
   handleMorseEvent = (event) => {
     if(event.type === "mousedown") {
       this.setState({
+        buttonColor: "#4c4c4c",
         start_time: Date.now()  
       });
     }
     else { //mouse up
       let local_end_time = Date.now()
       this.setState({
+        buttonColor: "black",
         end_time: local_end_time
       });
 
@@ -87,22 +92,22 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <button id="morse-btn" onMouseDown={this.handleMorseEvent} onMouseUp={this.handleMorseEvent}>CLICK</button>
-        {this.state.end_time - this.state.start_time}
-        <button id="end-letter-btn" onMouseDown={this.handleEndLetterEvent}>End letter</button>
-        <button id="end-word-btn" onMouseDown={this.handleEndWordEvent}>End Word</button>
-        <br/>
-        Dot:{this.state.dot.toString()}
-        <br/>
-        Dash:{this.state.dash.toString()}
-        <br/>
-        {this.state.sequence}
-        <br/>
-        {this.state.letter}
-        <br/>
-        {this.state.word}
+      <>
+        <div class="buttonContainer">
+          <button class="dot-button" style={{backgroundColor: this.state.buttonColor}} onMouseDown={this.handleMorseEvent} onMouseUp={this.handleMorseEvent}></button>
+        </div>
+        <div>
+          {/* {this.state.end_time - this.state.start_time} */}
+          <button onMouseDown={this.handleEndLetterEvent}>End letter</button>
+          <button onMouseDown={this.handleEndWordEvent}>End Word</button>
+          <br/>
+          {this.state.sequence}
+          <br/>
+          {this.state.letter}
+          <br/>
+          {this.state.word}
       </div>
+      </>
     ); 
   }
 
