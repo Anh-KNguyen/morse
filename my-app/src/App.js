@@ -7,7 +7,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      buttonColor: "black",
+      isButtonPushed: false,
+      islightOn: false,
       start_time: 0,
       end_time: 0,
       dot: false,   // <300 millis
@@ -22,14 +23,16 @@ class App extends React.Component {
   handleMorseEvent = (event) => {
     if(event.type === "mousedown") {
       this.setState({
-        buttonColor: "#4c4c4c",
+        isButtonPushed: true,
+        islightOn: true,
         start_time: Date.now()  
       });
     }
     else { //mouse up
       let local_end_time = Date.now()
       this.setState({
-        buttonColor: "black",
+        isButtonPushed: false,
+        islightOn: false,
         end_time: local_end_time
       });
 
@@ -94,12 +97,11 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <div class="light-on light-off">
-        
-        </div>
+        <div class={(this.state.islightOn ? "light-on" : "light-off")}/>
         <div class="row">
           <div class="col-md-auto">
-            <button class="dot-button" style={{backgroundColor: this.state.buttonColor}} onMouseDown={this.handleMorseEvent} onMouseUp={this.handleMorseEvent}></button>
+            <audio></audio>
+            <button class={"dot-button " + (this.state.isButtonPushed ? "dot-button-grey" : null)} onMouseDown={this.handleMorseEvent} onMouseUp={this.handleMorseEvent}></button>
           </div>
           <div class="col-md-auto align-self-center">
             <div>
