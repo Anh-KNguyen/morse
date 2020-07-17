@@ -115,9 +115,11 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <div className={(this.state.islightOn ? "light-on" : "light-off")}/>
-        <div className="row buttonContainer">
+        
+        
+        <div className="row button-container">
           <div className="col-auto">
+            <div className={(this.state.islightOn ? "light-on" : "light-off")} style={{marginLeft: "auto", marginRight: "auto"}}/>
             <button className={"dot-button " + (this.state.isButtonPushed ? "dot-button-grey" : null)} onMouseDown={this.handleMorseEvent} onMouseUp={this.handleMorseEvent}></button>
           </div>
           <div className="col-auto">
