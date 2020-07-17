@@ -130,16 +130,21 @@ class App extends React.Component {
             </div>
           </div>   
         </div>
-        
+
         <div>
           {/* {this.state.end_time - this.state.start_time} */}
-          
           <br/>
           {this.state.sequence}
           <br/>
           {this.state.letter}
           <br/>
           {this.state.word}
+          <br/>
+          {
+            Object.keys(data).map((key) =>(
+            <p> this is my key {key} and this is my value {data[key]}</p>
+            ))
+          }
         </div>
       </>
     ); 
