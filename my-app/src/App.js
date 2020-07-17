@@ -116,12 +116,11 @@ class App extends React.Component {
     return (
       <>
         <div className={(this.state.islightOn ? "light-on" : "light-off")}/>
-        <div className="row">
-          <div className="col-md-auto">
-            <audio></audio>
+        <div className="row buttonContainer">
+          <div className="col-auto">
             <button className={"dot-button " + (this.state.isButtonPushed ? "dot-button-grey" : null)} onMouseDown={this.handleMorseEvent} onMouseUp={this.handleMorseEvent}></button>
           </div>
-          <div className="col-md-auto align-self-center">
+          <div className="col-auto">
             <div>
               <button onMouseDown={this.handleEndLetterEvent}>End letter</button>
             </div>
@@ -140,11 +139,16 @@ class App extends React.Component {
           <br/>
           {this.state.word}
           <br/>
-          {
-            Object.keys(data).map((key) =>(
-            <p> this is my key {key} and this is my value {data[key]}</p>
-            ))
-          }
+          <div class="container">
+            <div className="row">
+              {Object.keys(data).map((key) =>(
+                <div className="col-auto">
+                  <p>{data[key]} {key}</p>
+                </div>
+              ))}
+            </div>     
+          </div>
+               
         </div>
       </>
     ); 
