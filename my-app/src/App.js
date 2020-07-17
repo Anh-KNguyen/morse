@@ -19,9 +19,28 @@ class App extends React.Component {
     }
   }
 
-  
+
+
+  setBeep() {
+    if(this.audioCtx == null) {
+      this.audioCtx = new (window.AudioContext || window.webkitAudioContext || window.audioContext)()
+      this.oscillator = this.audioCtx.createOscillator()
+      this.gainNode = this.audioCtx.createGain()
+
+      
+      this.gainNode.connect(this.audioCtx.destination)
+
+      this.gainNode.gain.value = 0.5 /100
+      this.oscillator.frequency.setValueAtTime(591,0)
+      this.oscillator.type = 'sine'
+      this.oscillator.start()
+    }
+  }
+
   handleMorseEvent = (event) => {
     if(event.type === "mousedown") {
+      this.setBeep()
+      this.oscillator.connect(this.gainNode)
       this.setState({
         isButtonPushed: true,
         islightOn: true,
@@ -30,6 +49,7 @@ class App extends React.Component {
     }
     else { //mouse up
       let local_end_time = Date.now()
+      this.oscillator.disconnect(this.gainNode)
       this.setState({
         isButtonPushed: false,
         islightOn: false,
@@ -67,12 +87,10 @@ class App extends React.Component {
           return {
             letter: state.letter + data[this.state.sequence], // concatenation of letters
             sequence: ""
-            
           }
         })
       }
       else {
-        console.log("incorrect letter")
         this.setState((state) => {
           return {
             sequence: ""
@@ -97,13 +115,13 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <div class={(this.state.islightOn ? "light-on" : "light-off")}/>
-        <div class="row">
-          <div class="col-md-auto">
+        <div className={(this.state.islightOn ? "light-on" : "light-off")}/>
+        <div className="row">
+          <div className="col-md-auto">
             <audio></audio>
-            <button class={"dot-button " + (this.state.isButtonPushed ? "dot-button-grey" : null)} onMouseDown={this.handleMorseEvent} onMouseUp={this.handleMorseEvent}></button>
+            <button className={"dot-button " + (this.state.isButtonPushed ? "dot-button-grey" : null)} onMouseDown={this.handleMorseEvent} onMouseUp={this.handleMorseEvent}></button>
           </div>
-          <div class="col-md-auto align-self-center">
+          <div className="col-md-auto align-self-center">
             <div>
               <button onMouseDown={this.handleEndLetterEvent}>End letter</button>
             </div>
