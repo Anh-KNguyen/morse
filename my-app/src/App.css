@@ -5,8 +5,8 @@
     align-items: center;
 }
 .dot-button {
-    height: 300px;
-    width: 300px;
+    height: 200px;
+    width: 200px;
     border-radius: 50%;
     border: 1px solid black;
     background-color: black;
@@ -19,8 +19,8 @@
     box-shadow: 0 -1px 5px 1px rgba(0, 0, 0, .2), inset 0 -2px 8px #5c0404, 0 2px 20px rgba(255, 0, 0, .8);
 }
 .light-off, .light-on {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     -webkit-transition: .5s ease;
     transition:.5s ease;
@@ -28,4 +28,10 @@
 .light-off {
     background-color: #9c0404;
     box-shadow: 0 -1px 5px 1px rgba(0, 0, 0, .2), inset 0 -1px 9px #5c0404, 0 2px 8px rgba(255, 0, 0, .25);
+}
+.light-container {
+    margin-left: "auto";
+    margin-right: "auto";
+    margin-top: "50px";
+    margin-bottom: "20px";
 }

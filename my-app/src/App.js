@@ -119,7 +119,7 @@ class App extends React.Component {
         
         <div className="row button-container">
           <div className="col-auto">
-            <div className={(this.state.islightOn ? "light-on" : "light-off")} style={{marginLeft: "auto", marginRight: "auto"}}/>
+            <div className={(this.state.islightOn ? "light-on" : "light-off")} style={{marginLeft: "auto", marginRight: "auto", marginTop: "100px", marginBottom: " 100px"}}/>
             <button className={"dot-button " + (this.state.isButtonPushed ? "dot-button-grey" : null)} onMouseDown={this.handleMorseEvent} onMouseUp={this.handleMorseEvent}></button>
           </div>
           <div className="col-auto">
@@ -135,11 +135,17 @@ class App extends React.Component {
         <div>
           {/* {this.state.end_time - this.state.start_time} */}
           <br/>
-          {this.state.sequence}
+          <div style={{marginLeft: "auto", marginRight: "auto", textAlign: "center"}}>
+            {this.state.sequence}
+          </div>
           <br/>
-          {this.state.letter}
+          <div style={{textAlign: "center"}}>
+            {this.state.letter}
+          </div>
           <br/>
-          {this.state.word}
+          <div style={{textAlign: "center"}}>
+            {this.state.word}
+          </div>
           <br/>
           <div class="container">
             <div className="row">
