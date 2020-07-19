@@ -111,6 +111,30 @@ class App extends React.Component {
     }
   }
 
+  handleClearSeqEvent = (event) => {
+    if(event.type === "mousedown") {
+      this.setState({
+          sequence: ""
+      })
+    }
+  }
+
+  handleClearLetterEvent = (event) => {
+    if(event.type === "mousedown") {
+      this.setState({
+          letter: ""
+      })
+    }
+  }
+
+  handleClearWordEvent = (event) => {
+    if(event.type === "mousedown") {
+      this.setState({
+          word: ""
+      })
+    }
+  }
+
 
   render() {
     return (
@@ -118,7 +142,7 @@ class App extends React.Component {
         <div className="row button-container">
           <div className="col-auto">
             <div>
-              <div className={(this.state.islightOn ? "light-on" : "light-off")} style={{marginLeft: "auto", marginRight: "auto", marginTop: "100px", marginBottom: " 100px"}}/>
+              <div className={(this.state.islightOn ? "light-on" : "light-off")} style={{marginLeft: "auto", marginRight: "auto", marginTop: "100px", marginBottom: " 50px"}}/>
               <button className={"dot-button " + (this.state.isButtonPushed ? "dot-button-grey" : null)} onMouseDown={this.handleMorseEvent} onMouseUp={this.handleMorseEvent}></button>
             </div>
             <div style={{marginLeft: "auto", marginRight: "auto", textAlign: "center", height: "50px", marginTop: "50px"}}>
@@ -136,11 +160,17 @@ class App extends React.Component {
           </div>
           <div className="col-auto">
             <div>
-              <button class="myButton" onMouseDown={this.handleEndLetterEvent}>End letter</button>
+              <button class="myButton" onMouseDown={this.handleClearSeqEvent}>CLEAR</button>
+            </div>
+            <br/>
+            <div>
+              <button class="myButton" onMouseDown={this.handleEndLetterEvent}>End Code</button>
+              <button class="myButton" onMouseDown={this.handleClearLetterEvent}>CLEAR</button>
             </div>
             <br/>
             <div>
               <button class="myButton" onMouseDown={this.handleEndWordEvent}>End Word</button>
+              <button class="myButton" onMouseDown={this.handleClearWordEvent}>CLEAR</button>
             </div>
           </div>   
         </div>
