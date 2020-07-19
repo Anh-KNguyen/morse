@@ -1,5 +1,9 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
+import InputGroup from 'react-bootstrap/InputGroup';
+import FormControl from 'react-bootstrap/FormControl';
+import Form from 'react-bootstrap/Form';
 import {data, alphabet, numbers, symbols} from './morseChart.js';
 import './App.css';
 
@@ -18,8 +22,6 @@ class App extends React.Component {
       word: ""      // a whole word
     }
   }
-
-
 
   setBeep() {
     if(this.audioCtx == null) {
@@ -80,7 +82,7 @@ class App extends React.Component {
     }
   }
 
-  handleEndLetterEvent = (event) => {
+  handleEndSeqEvent = (event) => {
     if(event.type === "mousedown") {
       if (this.state.sequence in data) {
         this.setState((state) => {
@@ -145,40 +147,53 @@ class App extends React.Component {
               <div className={(this.state.islightOn ? "light-on" : "light-off")} style={{marginLeft: "auto", marginRight: "auto", marginTop: "100px", marginBottom: " 50px"}}/>
               <button className={"dot-button " + (this.state.isButtonPushed ? "dot-button-grey" : null)} onMouseDown={this.handleMorseEvent} onMouseUp={this.handleMorseEvent}></button>
             </div>
-            <div className="flow-style" style={{marginLeft: "auto", marginRight: "auto", textAlign: "center", height: "50px", marginTop: "50px"}}>
-              {this.state.sequence} 
-            </div>
-            <br/>
-            <div className="flow-style" style={{textAlign: "center", height: "50px"}}>
-              {this.state.letter}
-            </div>
-            <br/>
-            <div className="flow-style" style={{textAlign: "center", height: "50px"}}>
-              {this.state.word}
-            </div>
             <br/>
           </div>
-          <div className="col-auto">
-            <div>
-              <button class="myButton" onMouseDown={this.handleClearSeqEvent}>CLEAR</button>
-            </div>
+          <div className="col-auto" style={{marginTop: "200px", marginLeft: "10px"}}>
+            <InputGroup>
+              <FormControl
+                readOnly
+                type="text"
+                placeholder="Morse code"
+                value={this.state.sequence}          
+              />
+              <InputGroup.Append>
+                <Button variant="success" onMouseDown={this.handleEndSeqEvent}>End Code</Button>  {/* end code sequence */}
+                <Button variant="danger" onMouseDown={this.handleClearSeqEvent}>Clear</Button>    {/* clear code sequence */}    
+              </InputGroup.Append>
+            </InputGroup>
             <br/>
-            <div>
-              <button class="myButton" onMouseDown={this.handleEndLetterEvent}>End Code</button>
-              <button class="myButton" onMouseDown={this.handleClearLetterEvent}>CLEAR</button>
-            </div>
+            <InputGroup>
+              <FormControl
+                readOnly
+                type="text"
+                placeholder="Letter(s)"
+                value={this.state.letter}          
+              />
+              <InputGroup.Append>
+                <Button variant="success" onMouseDown={this.handleEndWordEvent}>End Word</Button>   {/* becomes a word */}
+                <Button variant="danger" onMouseDown={this.handleClearLetterEvent}>Clear</Button>   {/* clear letter(s) */}
+              </InputGroup.Append>
+            </InputGroup>
             <br/>
-            <div>
-              <button class="myButton" onMouseDown={this.handleEndWordEvent}>End Word</button>
-              <button class="myButton" onMouseDown={this.handleClearWordEvent}>CLEAR</button>
-            </div>
+            <InputGroup>
+              <FormControl
+                readOnly
+                type="text"
+                placeholder="Word(s)"
+                value={this.state.word}          
+              />
+              <InputGroup.Append>
+                <Button variant="danger" onMouseDown={this.handleClearWordEvent}>Clear</Button>  {/* clear words(s) */}
+              </InputGroup.Append>
+            </InputGroup>
           </div>   
         </div>
 
         <div>
           {/* {this.state.end_time - this.state.start_time} */}   
           <br/>
-          <div class="container">
+          <div className="container" style={{marginTop: "40px"}}>
             <div className="row">
               <div className="col-6 split">
                 {Object.keys(alphabet).map((key) =>(
