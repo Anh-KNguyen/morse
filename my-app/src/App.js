@@ -212,7 +212,7 @@ class App extends React.Component {
               <div className="col-3">
                 {Object.keys(symbols).map((key) =>(
                   <div className="col-auto">
-                    <p className="codefont-style">{symbols[key]} {key}</p>
+                    <p className="codefont-style" style={{color: "red"}}>{symbols[key]} {key}</p>
                   </div>
                 ))}
               </div>
