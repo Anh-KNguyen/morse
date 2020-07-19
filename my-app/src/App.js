@@ -145,15 +145,15 @@ class App extends React.Component {
               <div className={(this.state.islightOn ? "light-on" : "light-off")} style={{marginLeft: "auto", marginRight: "auto", marginTop: "100px", marginBottom: " 50px"}}/>
               <button className={"dot-button " + (this.state.isButtonPushed ? "dot-button-grey" : null)} onMouseDown={this.handleMorseEvent} onMouseUp={this.handleMorseEvent}></button>
             </div>
-            <div style={{marginLeft: "auto", marginRight: "auto", textAlign: "center", height: "50px", marginTop: "50px"}}>
-              {this.state.sequence}
+            <div className="flow-style" style={{marginLeft: "auto", marginRight: "auto", textAlign: "center", height: "50px", marginTop: "50px"}}>
+              {this.state.sequence} 
             </div>
             <br/>
-            <div style={{textAlign: "center", height: "50px"}}>
+            <div className="flow-style" style={{textAlign: "center", height: "50px"}}>
               {this.state.letter}
             </div>
             <br/>
-            <div style={{textAlign: "center", height: "50px"}}>
+            <div className="flow-style" style={{textAlign: "center", height: "50px"}}>
               {this.state.word}
             </div>
             <br/>
@@ -183,21 +183,21 @@ class App extends React.Component {
               <div className="col-6 split">
                 {Object.keys(alphabet).map((key) =>(
                   <div className="col-auto">
-                    <p className="font-style">{alphabet[key]} {key}</p>
+                    <p className="codefont-style">{alphabet[key]} {key}</p>
                   </div>
                 ))}
               </div>
               <div className="col-3">
                 {Object.keys(numbers).map((key) =>(
                   <div className="col-auto">
-                    <p className="font-style">{numbers[key]} {key}</p>
+                    <p className="codefont-style">{numbers[key]} {key}</p>
                   </div>
                 ))}
               </div>
               <div className="col-3">
                 {Object.keys(symbols).map((key) =>(
                   <div className="col-auto">
-                    <p className="font-style">{symbols[key]} {key}</p>
+                    <p className="codefont-style">{symbols[key]} {key}</p>
                   </div>
                 ))}
               </div>

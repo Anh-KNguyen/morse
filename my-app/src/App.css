@@ -61,10 +61,14 @@
 	position:relative;
 	top:1px;
 }
-.font-style {
+.codefont-style {
     font-family: Courier New;
     font-size: 30px;
 }
 .split {
     column-count: 2;
+}
+.flow-style {
+    border: 1px solid black;
+    padding: 15px;
 }
