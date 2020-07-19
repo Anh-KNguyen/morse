@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import {data} from './morseChart.js';
+import {data, alphabet, numbers, symbols} from './morseChart.js';
 import './App.css';
 
 class App extends React.Component {
@@ -145,20 +145,31 @@ class App extends React.Component {
         </div>
 
         <div>
-          {/* {this.state.end_time - this.state.start_time} */}
-          
-          <br/>
-          
-          <br/>
-          
+          {/* {this.state.end_time - this.state.start_time} */}   
           <br/>
           <div class="container">
             <div className="row">
-              {Object.keys(data).map((key) =>(
-                <div className="col-auto">
-                  <p className="font-style">{data[key]} {key}</p>
-                </div>
-              ))}
+              <div className="col-6 split">
+                {Object.keys(alphabet).map((key) =>(
+                  <div className="col-auto">
+                    <p className="font-style">{alphabet[key]} {key}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="col-3">
+                {Object.keys(numbers).map((key) =>(
+                  <div className="col-auto">
+                    <p className="font-style">{numbers[key]} {key}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="col-3">
+                {Object.keys(symbols).map((key) =>(
+                  <div className="col-auto">
+                    <p className="font-style">{symbols[key]} {key}</p>
+                  </div>
+                ))}
+              </div>
             </div>     
           </div>
                
