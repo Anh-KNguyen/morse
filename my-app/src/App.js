@@ -135,10 +135,11 @@ class App extends React.Component {
           </div>
           <div className="col-auto">
             <div>
-              <button onMouseDown={this.handleEndLetterEvent}>End letter</button>
+              <button class="myButton" onMouseDown={this.handleEndLetterEvent}>End letter</button>
             </div>
+            <br/>
             <div>
-              <button onMouseDown={this.handleEndWordEvent}>End Word</button>
+              <button class="myButton" onMouseDown={this.handleEndWordEvent}>End Word</button>
             </div>
           </div>   
         </div>
