@@ -156,7 +156,7 @@ class App extends React.Component {
             <div className="row">
               {Object.keys(data).map((key) =>(
                 <div className="col-auto">
-                  <p>{data[key]} {key}</p>
+                  <p className="font-style">{data[key]} {key}</p>
                 </div>
               ))}
             </div>     
