@@ -32,7 +32,7 @@ class App extends React.Component {
       
       this.gainNode.connect(this.audioCtx.destination)
 
-      this.gainNode.gain.value = 0.5 /100
+      this.gainNode.gain.value = 1 /100
       this.oscillator.frequency.setValueAtTime(591,0)
       this.oscillator.type = 'sine'
       this.oscillator.start()
@@ -49,7 +49,7 @@ class App extends React.Component {
         start_time: Date.now()  
       });
     }
-    else { //mouse up
+    else if(event.type === "mouseup" || (event.type === "mouseleave" && this.state.isButtonPushed)) {
       let local_end_time = Date.now()
       this.oscillator.disconnect(this.gainNode)
       this.setState({
@@ -141,11 +141,11 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <div className="row button-container">
+        <div className="row button-container shadow-none">
           <div className="col-auto">
             <div>
               <div className={(this.state.islightOn ? "light-on" : "light-off")} style={{marginLeft: "auto", marginRight: "auto", marginTop: "100px", marginBottom: " 50px"}}/>
-              <button className={"dot-button " + (this.state.isButtonPushed ? "dot-button-grey" : null)} onMouseDown={this.handleMorseEvent} onMouseUp={this.handleMorseEvent}></button>
+              <button className={"dot-button " + (this.state.isButtonPushed ? "dot-button-grey" : null)} onMouseDown={this.handleMorseEvent} onMouseUp={this.handleMorseEvent} onMouseLeave={this.handleMorseEvent}></button>
             </div>
             <br/>
           </div>

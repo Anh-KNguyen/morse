@@ -3,6 +3,9 @@
     flex-direction: row;
     justify-content: center;
 }
+.dot-button:focus {
+    outline: none !important;
+}
 .dot-button {
     height: 200px;
     width: 200px;
