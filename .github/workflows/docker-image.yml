@@ -14,5 +14,20 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build . --tag anhknguyen97/morse:latest:$(date +%s)
+    - name: Build and push Docker images
+      uses: docker/build-push-action@v1.1.0
+      with:
+        # Username used to log in to a Docker registry. If not set then no login will occur
+        username: ${{ secrets.DOCKER_USERNAME }}
+        # Password or personal access token used to log in to a Docker registry. If not set then no login will occur
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        # Docker repository to tag the image with:
+        repository: anhknguyen97/morse
+        # Comma-delimited list of tags. These will be added to the registry/repository to form the image's tags
+        tags: latest
+        # Automatically tags the built image with the git reference as per the readme
+        tag_with_ref: true
+        # Automatically tags the built image with the git short SHA as per the readme
+        tag_with_sha: true
+        # push is default to true
+
