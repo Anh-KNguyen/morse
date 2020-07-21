@@ -42,7 +42,7 @@ jobs:
         # content of ssh private key. ex raw content of ~/.ssh/id_rsa
         key: ${{ secrets.SSH_KEY }}
         command: |
-          docker kill $(docker ps -q)
+          docker kill $$(docker ps -q)
           docker pull
           docker run -it -d -p 80:3000 anhknguyen97/morse:latest
           
