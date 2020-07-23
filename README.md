@@ -1,2 +1,2 @@
-# morse
-React application for people to learn morse code
+# morse ![build](https://github.com/Anh-KNguyen/morse/workflows/build/badge.svg)
+An interactive web app to learn and play morse code. Built entirely in React
