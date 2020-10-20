@@ -41,7 +41,7 @@ jobs:
       uses: appleboy/ssh-action@v0.1.2
       with:
         # ssh host
-        host: morse.anhknguyen.com
+        host: morse.anhknguyen.dev
         # ssh port defaults to 22
         # ssh username
         username: ${{ secrets.SSH_USERNAME }}
