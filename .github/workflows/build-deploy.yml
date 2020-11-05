@@ -44,5 +44,9 @@ jobs:
         # include more ciphers with use_insecure_cipher
         # content of ssh private key. ex raw content of ~/.ssh/id_rsa
         key: ${{ secrets.SSH_KEY }}
-        
+        script: |
+          cd /usr/repos
+          (git clone git@github.com:Anh-KNguyen/morse.git) || (cd morse; git pull)
+          cd morse
+          docker-compose up --build --force-recreate -d
         
